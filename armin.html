@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | BCA Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="index.html" class="logo">✦ BCA<span class="logo-accent">admin</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="semester.html" class="nav-link">Semesters</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container admin-container">
+        <h1 class="page-title">🛡️ Admin Dashboard</h1>
+        
+        <div class="admin-grid">
+            <!-- Note Generator -->
+            <section class="admin-card glass">
+                <h2>📝 Generate Markdown Note</h2>
+                <form id="note-generator" class="admin-form">
+                    <div class="form-group">
+                        <label>Note Title</label>
+                        <input type="text" id="gen-title" placeholder="e.g., C Programming Basics" required>
+                    </div>
+                    <div class="form-group">
+                        <label>File Name</label>
+                        <input type="text" id="gen-filename" placeholder="e.g., c-basics" required>
+                        <small>Will save as c-basics-en.md</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Markdown Content</label>
+                        <textarea id="gen-markdown" rows="12" placeholder="Write your markdown content here..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Language</label>
+                        <select id="gen-lang">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Generate .md File</button>
+                </form>
+                <div class="output-box" id="generate-output"></div>
+            </section>
+
+            <!-- Link Generator -->
+            <section class="admin-card glass">
+                <h2>🔗 Generate Unit Link</h2>
+                <div class="form-group">
+                    <label>Note File Name</label>
+                    <input type="text" id="link-filename" placeholder="e.g., arrays">
+                </div>
+                <button class="btn-secondary" id="copy-link-btn">Copy Link</button>
+                <div class="output-box" id="link-output"></div>
+                
+                <div class="preview-section">
+                    <h3>Live Preview</h3>
+                    <textarea id="preview-markdown" rows="6" placeholder="Type markdown to preview..."></textarea>
+                    <div class="preview-box" id="live-preview"></div>
+                </div>
+            </section>
+
+            <!-- Leads Management -->
+            <section class="admin-card glass admin-full">
+                <h2>👥 Leads Management</h2>
+                <div class="lead-controls">
+                    <input type="text" id="lead-search" placeholder="🔍 Search by name or mobile..." class="search-input">
+                    <button class="btn-secondary" id="export-csv">📥 Export CSV</button>
+                    <button class="btn-secondary" id="refresh-leads">🔄 Refresh</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="leads-table" id="leads-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Note Title</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leads-tbody">
+                            <tr>
+                                <td colspan="5">Loading leads...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="lead-stats" id="lead-stats">
+                    <span>Total Leads: <strong id="total-leads">0</strong></span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
