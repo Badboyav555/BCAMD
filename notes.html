@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Notes | BCA Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <link rel="stylesheet" href="css/notes.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar with Progress Bar -->
+    <nav class="navbar glass" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">✦ BCA<span class="logo-accent">notes</span></a>
+            <div class="nav-actions">
+                <button id="lang-toggle" class="lang-btn" title="Switch Language">
+                    <span class="lang-text">हिन्दी</span>
+                </button>
+                <button id="toc-toggle" class="toc-mobile-btn" title="Table of Contents">📑</button>
+            </div>
+        </div>
+        <div class="progress-bar" id="progress-bar"></div>
+    </nav>
+
+    <!-- Main Reading Layout -->
+    <div class="notes-layout">
+        <!-- Table of Contents Sidebar -->
+        <aside class="toc-sidebar glass" id="toc-sidebar">
+            <div class="toc-header">
+                <h3>📑 Contents</h3>
+                <button class="toc-close" id="toc-close">×</button>
+            </div>
+            <nav class="toc-nav" id="toc-list">
+                <!-- Generated from headings -->
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="notes-main">
+            <article class="notes-container glass">
+                <!-- Note metadata -->
+                <header class="note-header">
+                    <h1 class="note-title" id="note-title">Loading...</h1>
+                    <div class="note-meta">
+                        <span class="meta-item">📅 Updated: 2024</span>
+                        <span class="meta-item">⏱️ 10 min read</span>
+                        <span class="meta-item" id="lang-indicator">🇬🇧 English</span>
+                    </div>
+                </header>
+
+                <!-- Rendered Markdown -->
+                <div class="markdown-body" id="markdown-body">
+                    <div class="loading-spinner">Loading notes...</div>
+                </div>
+
+                <!-- 30% Preview Lock Overlay -->
+                <div class="preview-overlay hidden" id="preview-lock">
+                    <div class="preview-gradient"></div>
+                    <div class="unlock-card glass">
+                        <div class="unlock-icon">🔒</div>
+                        <h3>Unlock Full Notes</h3>
+                        <p>You've previewed 30% of the content. Unlock to read complete notes.</p>
+                        <button class="btn-primary btn-unlock" id="unlock-trigger">
+                            Unlock Now → 
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div class="modal" id="image-modal">
+        <span class="modal-close" id="image-modal-close">×</span>
+        <img id="image-modal-img" src="" alt="Zoomed image">
+    </div>
+
+    <!-- Unlock Form Modal -->
+    <div class="modal" id="unlock-modal">
+        <div class="modal-card glass">
+            <button class="modal-close" id="unlock-modal-close">×</button>
+            <div class="modal-icon">🔓</div>
+            <h3>Unlock Full Access</h3>
+            <p>Enter your details to read complete notes</p>
+            <form id="lead-form" class="unlock-form">
+                <div class="form-group">
+                    <label for="lead-name">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="lead-name" 
+                        placeholder="Enter your name" 
+                        required 
+                        autocomplete="name"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="lead-mobile">Mobile Number</label>
+                    <input 
+                        type="tel" 
+                        id="lead-mobile" 
+                        placeholder="Enter mobile number" 
+                        required 
+                        autocomplete="tel-national"
+                        pattern="[0-9]{10}"
+                    >
+                </div>
+                <input type="hidden" id="lead-note-title">
+                <button type="submit" class="btn-primary btn-full">
+                    Unlock Now - No OTP Required
+                </button>
+                <p class="form-note">🔒 Your data is safe. No spam, no OTP.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Copy Code Toast -->
+    <div class="toast" id="copy-toast">📋 Code copied!</div>
+
+    <script src="js/notes.js"></script>
+</body>
+</html>
