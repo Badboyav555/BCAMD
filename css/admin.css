@@ -1,0 +1,221 @@
+/* ============================================
+   ADMIN DASHBOARD - MANAGEMENT INTERFACE
+   ============================================ */
+
+.admin-container {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.admin-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.admin-card h2 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--cyan-bg);
+}
+
+.admin-full {
+    grid-column: 1 / -1;
+}
+
+/* Form Styles */
+.admin-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.admin-form label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--text-primary);
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    transition: border-color var(--transition-fast);
+    background: var(--bg-secondary);
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+    outline: none;
+    border-color: var(--cyan-primary);
+    background: white;
+}
+
+.admin-form textarea {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.admin-form small {
+    display: block;
+    color: var(--text-tertiary);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Output Box */
+.output-box {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    word-break: break-all;
+    min-height: 2.5rem;
+    border: 1px dashed var(--border-color);
+}
+
+/* Lead Controls */
+.lead-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.lead-controls .search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+}
+
+.lead-controls .search-input:focus {
+    outline: none;
+    border-color: var(--cyan-primary);
+}
+
+/* Table */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+.leads-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.leads-table th {
+    background: var(--bg-tertiary);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.leads-table td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.leads-table tr:hover td {
+    background: var(--cyan-bg);
+}
+
+/* Lead Stats */
+.lead-stats {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--cyan-bg);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.lead-stats strong {
+    color: var(--cyan-dark);
+    font-size: 1.2rem;
+}
+
+/* Preview Section */
+.preview-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.preview-section h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.preview-section textarea {
+    width: 100%;
+    padding: 0.65rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    resize: vertical;
+    background: var(--bg-secondary);
+}
+
+.preview-box {
+    margin-top: 0.75rem;
+    padding: 1rem;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    min-height: 3rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Buttons spacing */
+.admin-card .btn-primary,
+.admin-card .btn-secondary {
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lead-controls {
+        flex-direction: column;
+    }
+    
+    .lead-controls .search-input {
+        width: 100%;
+    }
+}
