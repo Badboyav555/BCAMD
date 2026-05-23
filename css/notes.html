@@ -1,0 +1,430 @@
+/* ============================================
+   NOTES READER - PREMIUM READING EXPERIENCE
+   ============================================ */
+
+/* Notes Layout */
+.notes-layout {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 0 1.25rem;
+    min-height: calc(100vh - 120px);
+}
+
+/* Table of Contents Sidebar */
+.toc-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    position: sticky;
+    top: 90px;
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+.toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.toc-header h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.toc-close {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.toc-nav {
+    list-style: none;
+}
+
+.toc-nav li {
+    padding: 0.4rem 0;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.toc-nav li:hover,
+.toc-nav li.active {
+    color: var(--cyan-primary);
+    border-left-color: var(--cyan-primary);
+}
+
+/* Notes Main */
+.notes-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.notes-container {
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    position: relative;
+}
+
+/* Note Header */
+.note-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.note-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.note-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Language Toggle */
+.lang-btn {
+    background: var(--cyan-bg);
+    border: 1px solid var(--cyan-primary);
+    color: var(--cyan-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all var(--transition-normal);
+}
+
+.lang-btn:hover {
+    background: var(--cyan-primary);
+    color: white;
+}
+
+/* Markdown Body */
+.markdown-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.markdown-body h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.markdown-body h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.75rem 0 0.75rem;
+    color: var(--text-primary);
+}
+
+.markdown-body h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.markdown-body p {
+    margin-bottom: 1rem;
+}
+
+.markdown-body ul, 
+.markdown-body ol {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+}
+
+.markdown-body li {
+    margin-bottom: 0.35rem;
+}
+
+.markdown-body code {
+    background: #f1f5f9;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: #e11d48;
+}
+
+.markdown-body pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.markdown-body pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+/* Copy Code Button */
+.copy-code-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.markdown-body pre:hover .copy-code-btn {
+    opacity: 1;
+}
+
+.markdown-body blockquote {
+    border-left: 4px solid var(--cyan-primary);
+    padding: 0.75rem 1.25rem;
+    margin: 1rem 0;
+    background: var(--cyan-bg);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    color: var(--text-secondary);
+}
+
+.markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.markdown-body th,
+.markdown-body td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.markdown-body th {
+    background: var(--bg-tertiary);
+    font-weight: 600;
+}
+
+.markdown-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+    margin: 1rem 0;
+}
+
+.markdown-body img:hover {
+    transform: scale(1.02);
+}
+
+/* Preview Lock Overlay */
+.preview-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.preview-overlay.hidden {
+    display: none;
+}
+
+.preview-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 50%, transparent 100%);
+}
+
+.unlock-card {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    margin: 1rem;
+    pointer-events: all;
+    border-radius: var(--radius-lg);
+    background: white;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+}
+
+.unlock-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.unlock-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.unlock-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Unlock Form */
+.unlock-form .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.unlock-form label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: var(--text-primary);
+}
+
+.unlock-form input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: border-color var(--transition-fast);
+}
+
+.unlock-form input:focus {
+    outline: none;
+    border-color: var(--cyan-primary);
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.form-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 0.75rem;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e293b;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    z-index: 300;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* Loading */
+.loading-spinner {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .notes-layout {
+        flex-direction: column;
+        padding: 0 0.75rem;
+    }
+    
+    .toc-sidebar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        z-index: 150;
+        border-radius: 0;
+        transition: left var(--transition-normal);
+    }
+    
+    .toc-sidebar.mobile-open {
+        left: 0;
+    }
+    
+    .toc-close {
+        display: block;
+    }
+    
+    .toc-mobile-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .notes-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .note-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 901px) {
+    .toc-mobile-btn {
+        display: none;
+    }
+}
